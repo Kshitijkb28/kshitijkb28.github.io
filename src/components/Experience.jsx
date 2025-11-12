@@ -22,13 +22,13 @@ const Experience = () => {
   }
 
   return (
-    <section id="experience" className="py-20 px-4" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="experience" className="section-shell" ref={ref}>
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Professional <span className="text-gradient">Experience</span>
@@ -44,16 +44,16 @@ const Experience = () => {
         >
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-0 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500"></div>
+            <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/60 via-purple-500/30 to-transparent"></div>
 
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="relative pl-8 md:pl-20 pb-8"
+              className="relative pl-12 md:pl-20 pb-8"
             >
               {/* Timeline dot */}
-              <div className="absolute left-0 md:left-6 top-0 w-5 h-5 bg-blue-500 rounded-full border-4 border-gray-950"></div>
+              <div className="absolute left-3 md:left-6 top-0 w-5 h-5 bg-blue-500 rounded-full border-4 border-gray-950 shadow-lg shadow-blue-500/40"></div>
 
-              <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 md:p-8 hover:border-blue-500/50 transition-all">
+              <div className="glass-panel border-white/5 p-6 md:p-8 hover:border-blue-500/50 transition-all">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                   <div>

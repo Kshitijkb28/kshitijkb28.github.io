@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Github, Linkedin, ExternalLink } from 'lucide-react'
 
 const Contact = () => {
   const ref = useRef(null)
@@ -57,13 +57,13 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gray-900/30" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="section-shell" ref={ref}>
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Get In <span className="text-gradient">Touch</span>
@@ -95,18 +95,37 @@ const Contact = () => {
                 href={info.link}
                 target={info.link.startsWith('http') ? '_blank' : undefined}
                 rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                whileHover={{ scale: 1.03, x: 5 }}
-                className="flex items-center gap-4 p-4 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl hover:border-blue-500/50 transition-all group"
+                initial={{ opacity: 0, x: -20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.3 + index * 0.1 }}
+                whileHover={{ scale: 1.05, x: 10 }}
+                className="relative flex items-center gap-4 p-5 glass-panel border-white/5 hover:border-blue-500/50 transition-all group overflow-hidden"
               >
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${info.color} p-2.5 group-hover:scale-110 transition-transform`}>
+                {/* Background glow */}
+                <div className={`absolute inset-0 bg-gradient-to-r ${info.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
+                
+                <motion.div 
+                  className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${info.color} p-3 shadow-lg`}
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <info.icon className="w-full h-full text-white" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">{info.title}</p>
+                </motion.div>
+                <div className="relative">
+                  <p className="text-sm text-gray-400 mb-1">{info.title}</p>
                   <p className="text-white font-semibold group-hover:text-blue-400 transition-colors">
                     {info.value}
                   </p>
                 </div>
+
+                {/* Arrow indicator */}
+                <motion.div
+                  className="absolute right-4 opacity-0 group-hover:opacity-100 transition-opacity"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  <ExternalLink size={18} className="text-blue-400" />
+                </motion.div>
               </motion.a>
             ))}
           </motion.div>
@@ -117,7 +136,7 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="glass-panel border-white/5 p-6 sm:p-8 space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                   Your Name
@@ -129,7 +148,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-lg focus:outline-none focus:border-blue-500 text-white placeholder-gray-500 transition-colors"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 text-white placeholder-gray-500 transition-colors"
                   placeholder="John Doe"
                 />
               </div>
@@ -145,7 +164,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-lg focus:outline-none focus:border-blue-500 text-white placeholder-gray-500 transition-colors"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 text-white placeholder-gray-500 transition-colors"
                   placeholder="john@example.com"
                 />
               </div>
@@ -161,7 +180,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="6"
-                  className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-lg focus:outline-none focus:border-blue-500 text-white placeholder-gray-500 transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 text-white placeholder-gray-500 transition-colors resize-none"
                   placeholder="Your message here..."
                 ></textarea>
               </div>

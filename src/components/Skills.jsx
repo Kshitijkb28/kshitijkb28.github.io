@@ -59,13 +59,13 @@ const Skills = () => {
   }
 
   return (
-    <section id="skills" className="py-20 px-4 bg-gray-900/30" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="skills" className="section-shell" ref={ref}>
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Technical <span className="text-gradient">Skills</span>
@@ -83,24 +83,48 @@ const Skills = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-blue-500/50 transition-all group"
+              whileHover={{ scale: 1.05, y: -10 }}
+              className="relative glass-panel border-white/5 p-6 hover:border-blue-500/50 transition-all group overflow-hidden"
             >
-              <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${category.color} p-3 mb-4 group-hover:scale-110 transition-transform`}>
-                <category.icon className="w-full h-full text-white" />
+              {/* Animated background gradient */}
+              <motion.div
+                className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
+                animate={{
+                  backgroundPosition: ['0% 0%', '100% 100%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                }}
+              />
+              
+              <div className="relative z-10">
+                <motion.div 
+                  className={`w-16 h-16 rounded-xl bg-gradient-to-br ${category.color} p-3.5 mb-4 shadow-lg`}
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <category.icon className="w-full h-full text-white" />
+                </motion.div>
+                <h3 className="text-xl font-bold mb-4 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
+                  {category.title}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.span
+                      key={skillIndex}
+                      whileHover={{ scale: 1.15, y: -2 }}
+                      className="px-3 py-1.5 bg-gray-800/70 text-gray-300 rounded-lg text-sm border border-gray-700 hover:border-blue-500 hover:bg-blue-500/10 hover:text-blue-300 transition-all cursor-pointer shadow-sm"
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">{category.title}</h3>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.span
-                    key={skillIndex}
-                    whileHover={{ scale: 1.1 }}
-                    className="px-3 py-1 bg-gray-800/50 text-gray-300 rounded-full text-sm border border-gray-700 hover:border-blue-500/50 transition-colors"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </div>
+
+              {/* Corner decoration */}
+              <div className={`absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br ${category.color} opacity-20 blur-2xl group-hover:opacity-30 transition-opacity`} />
             </motion.div>
           ))}
         </motion.div>
@@ -118,7 +142,7 @@ const Skills = () => {
               <motion.span
                 key={index}
                 whileHover={{ scale: 1.1, y: -2 }}
-                className="px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 text-blue-300 rounded-lg text-sm font-medium hover:border-blue-500 transition-all"
+                className="px-4 py-2 bg-white/5 border border-white/10 text-gray-200 rounded-lg text-sm font-medium hover:border-blue-500/60 transition-all"
               >
                 {tech}
               </motion.span>

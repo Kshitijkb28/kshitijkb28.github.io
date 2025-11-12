@@ -9,7 +9,7 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const stats = [
-    { icon: Briefcase, label: 'Experience', value: '1+ Years' },
+    { icon: Briefcase, label: 'Experience', value: '2.2 Years' },
     { icon: Award, label: 'Projects', value: '10+' },
     { icon: GraduationCap, label: 'Certifications', value: '2+' },
   ]
@@ -31,14 +31,32 @@ const About = () => {
     }
   ]
 
+  const focusAreas = [
+    {
+      title: 'Product-Driven',
+      description: 'Blend of engineering depth and product thinking to ship features that move business metrics.',
+      accent: 'from-blue-500/40 via-cyan-500/20 to-transparent'
+    },
+    {
+      title: 'Systems Mindset',
+      description: 'Comfortable moving between frontend polish, backend design, and cloud infrastructure decisions.',
+      accent: 'from-purple-500/40 via-pink-500/20 to-transparent'
+    },
+    {
+      title: 'Quality Loop',
+      description: 'Bias for automation, accessibility, and maintainable patterns that keep iteration fast.',
+      accent: 'from-emerald-500/40 via-teal-500/20 to-transparent'
+    }
+  ]
+
   return (
-    <section id="about" className="py-20 px-4" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="section-shell" ref={ref}>
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             About <span className="text-gradient">Me</span>
@@ -56,12 +74,64 @@ const About = () => {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 text-center"
+              whileHover={{ scale: 1.08, y: -8 }}
+              className="relative glass-panel p-8 text-center overflow-hidden group transition-all hover:-translate-y-1"
             >
-              <stat.icon className="w-12 h-12 mx-auto mb-4 text-blue-400" />
-              <h3 className="text-3xl font-bold text-gradient mb-2">{stat.value}</h3>
-              <p className="text-gray-400">{stat.label}</p>
+              {/* Animated background */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/15 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity"
+                animate={{
+                  backgroundPosition: ['0% 0%', '100% 100%'],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                }}
+              />
+              
+              <div className="relative z-10">
+                <motion.div
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                  className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 mb-4 shadow-lg"
+                >
+                  <stat.icon className="w-10 h-10 text-white" />
+                </motion.div>
+                <motion.h3 
+                  className="text-4xl font-bold text-gradient mb-2"
+                  initial={{ scale: 0 }}
+                  animate={isInView ? { scale: 1 } : {}}
+                  transition={{ delay: 0.3 + index * 0.1, type: "spring", stiffness: 200 }}
+                >
+                  {stat.value}
+                </motion.h3>
+                <p className="text-gray-400 font-medium">{stat.label}</p>
+              </div>
+
+              {/* Corner decoration */}
+              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-500 opacity-10 blur-3xl group-hover:opacity-20 transition-opacity" />
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Focus cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="grid md:grid-cols-3 gap-6 mb-16"
+        >
+          {focusAreas.map((area, index) => (
+            <motion.div
+              key={area.title}
+              whileHover={{ y: -6 }}
+              className="group relative h-full rounded-2xl border border-white/5 bg-gray-900/50 p-6 overflow-hidden"
+            >
+              <span className="text-sm uppercase tracking-[0.2em] text-gray-400">Focus</span>
+              <h3 className="mt-3 text-xl font-semibold text-white">{area.title}</h3>
+              <p className="mt-3 text-gray-400 leading-relaxed">{area.description}</p>
+              <div className={`absolute inset-0 pointer-events-none bg-gradient-to-r ${area.accent} opacity-0 transition-opacity group-hover:opacity-30`}></div>
             </motion.div>
           ))}
         </motion.div>
@@ -81,7 +151,7 @@ const About = () => {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.02 }}
-                className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-blue-500/50 transition-all"
+                className="glass-panel p-6 hover:border-blue-500/60 transition-all"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>

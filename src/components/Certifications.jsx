@@ -24,13 +24,13 @@ const Certifications = () => {
   ]
 
   return (
-    <section id="certifications" className="py-20 px-4" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="certifications" className="section-shell" ref={ref}>
+      <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-gradient">Certifications</span>
@@ -46,7 +46,7 @@ const Certifications = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
               whileHover={{ scale: 1.03, y: -5 }}
-              className="group relative bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-blue-500/50 transition-all overflow-hidden"
+              className="group relative glass-panel border-white/5 p-6 hover:border-blue-500/50 transition-all overflow-hidden"
             >
               {/* Background gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-5 transition-opacity`}></div>

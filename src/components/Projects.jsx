@@ -50,13 +50,13 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-20 px-4 bg-gray-900/30" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="section-shell" ref={ref}>
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="section-heading"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Featured <span className="text-gradient">Projects</span>
@@ -74,13 +74,24 @@ const Projects = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ y: -10 }}
-              className="group relative bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all"
+              whileHover={{ y: -15, scale: 1.02 }}
+              className="group relative glass-panel border-white/5 overflow-hidden hover:border-blue-500/50 transition-all"
             >
-              {/* Gradient header */}
-              <div className={`h-2 bg-gradient-to-r ${project.gradient}`}></div>
+              {/* Gradient header with animation */}
+              <motion.div 
+                className={`h-3 bg-gradient-to-r ${project.gradient}`}
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{ backgroundSize: '200% 200%' }}
+              />
 
-              <div className="p-6">
+              <div className="p-6 relative">
                 {/* Project title and period */}
                 <div className="mb-4">
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
@@ -97,6 +108,15 @@ const Projects = () => {
                   {project.description}
                 </p>
 
+                <div className="mb-6 flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-gray-400">
+                  <span className="inline-flex items-center gap-1 text-blue-300">
+                    <ExternalLink size={12} />
+                    Case study
+                  </span>
+                  <span className="h-px flex-1 bg-white/10"></span>
+                  <span>{project.period}</span>
+                </div>
+
                 {/* Technologies */}
                 <div className="mb-6">
                   <div className="flex flex-wrap gap-2">
@@ -112,28 +132,30 @@ const Projects = () => {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4">
+                <div className="flex gap-3">
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.08, x: 2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg text-sm border border-blue-500/30 hover:bg-blue-500/30 transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg text-sm font-medium shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all"
                   >
                     <ExternalLink size={16} />
                     <span>View</span>
                   </motion.button>
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.08, x: 2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 text-gray-300 rounded-lg text-sm border border-gray-700 hover:border-gray-600 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-800/80 text-gray-300 rounded-lg text-sm border border-gray-700 hover:border-blue-500 hover:bg-gray-700/80 hover:text-white transition-all"
                   >
                     <Github size={16} />
-                    <span>Code</span>
                   </motion.button>
                 </div>
               </div>
 
               {/* Hover effect overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-5 transition-opacity pointer-events-none`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none`}></div>
+              
+              {/* Corner glow */}
+              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-20 blur-3xl transition-opacity`}></div>
             </motion.div>
           ))}
         </motion.div>
