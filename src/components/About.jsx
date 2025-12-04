@@ -9,7 +9,7 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const stats = [
-    { icon: Briefcase, label: 'Experience', value: '2.2 Years' },
+    { icon: Briefcase, label: 'Experience', value: '2 yrs 3 mos' },
     { icon: Award, label: 'Projects', value: '10+' },
     { icon: GraduationCap, label: 'Certifications', value: '2+' },
   ]
@@ -89,7 +89,7 @@ const About = () => {
                   repeatType: 'reverse',
                 }}
               />
-              
+
               <div className="relative z-10">
                 <motion.div
                   whileHover={{ rotate: 360, scale: 1.1 }}
@@ -98,7 +98,7 @@ const About = () => {
                 >
                   <stat.icon className="w-10 h-10 text-white" />
                 </motion.div>
-                <motion.h3 
+                <motion.h3
                   className="text-4xl font-bold text-gradient mb-2"
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : {}}

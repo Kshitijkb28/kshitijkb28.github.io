@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Code2, Palette, Server, Database, Cloud } from 'lucide-react'
+import { FaCode, FaPaintBrush, FaServer, FaDatabase, FaCloud } from 'react-icons/fa'
 
 const Skills = () => {
   const ref = useRef(null)
@@ -8,33 +8,33 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      icon: Code2,
+      icon: FaCode,
       title: 'Languages',
       skills: ['PHP', 'Python', 'JavaScript', 'C++'],
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: Palette,
+      icon: FaPaintBrush,
       title: 'Frontend',
-      skills: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'React'],
+      skills: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'React', 'Next.js'],
       color: 'from-purple-500 to-pink-500'
     },
     {
-      icon: Server,
+      icon: FaServer,
       title: 'Backend',
       skills: ['Laravel', 'Node.js', 'FastAPI', 'Flask', 'Django'],
       color: 'from-green-500 to-emerald-500'
     },
     {
-      icon: Database,
+      icon: FaDatabase,
       title: 'Database',
       skills: ['MySQL', 'MongoDB', 'PostgreSQL'],
       color: 'from-orange-500 to-red-500'
     },
     {
-      icon: Cloud,
-      title: 'Cloud',
-      skills: ['AWS S3 Bucket'],
+      icon: FaCloud,
+      title: 'Cloud & DevOps',
+      skills: ['AWS S3', 'Linux', 'Apache', 'Nginx'],
       color: 'from-yellow-500 to-orange-500'
     }
   ]
@@ -98,10 +98,10 @@ const Skills = () => {
                   repeatType: 'reverse',
                 }}
               />
-              
-              <div className="relative z-10">
-                <motion.div 
-                  className={`w-16 h-16 rounded-xl bg-gradient-to-br ${category.color} p-3.5 mb-4 shadow-lg`}
+
+              <div className="relative z-10 text-center">
+                <motion.div
+                  className={`w-16 h-16 rounded-xl bg-gradient-to-br ${category.color} p-3.5 mb-4 shadow-lg mx-auto`}
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 >
@@ -110,7 +110,7 @@ const Skills = () => {
                 <h3 className="text-xl font-bold mb-4 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
                   {category.title}
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.span
                       key={skillIndex}
@@ -138,7 +138,7 @@ const Skills = () => {
         >
           <h3 className="text-2xl font-bold mb-6 text-gray-300">Other Technologies</h3>
           <div className="flex flex-wrap justify-center gap-3">
-            {['WebSockets', 'CKEditor', 'Shopify', 'OAuth2', 'Electron', 'REST APIs', 'Git', 'Prompt Engineering'].map((tech, index) => (
+            {['Meilisearch', 'Ragic DB', 'Twilio', 'WebSockets', 'CKEditor', 'Shopify', 'OAuth2', 'Electron', 'REST APIs', 'Git', 'Prompt Engineering'].map((tech, index) => (
               <motion.span
                 key={index}
                 whileHover={{ scale: 1.1, y: -2 }}

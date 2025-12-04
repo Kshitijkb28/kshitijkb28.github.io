@@ -7,18 +7,16 @@ const Experience = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const experience = {
-    company: 'Mind2web',
+    company: 'Mind2web LLP',
     position: 'Associate Software Developer',
-    period: 'August 2023 - Present',
+    period: 'August 2023 - October 2025',
     location: 'Remote',
     responsibilities: [
-      'Contributed to Dropshipping Website Development using Laravel, MySQL, Node.js, CKEditor, Shopify, and other technologies',
-      'Developed and enhanced real-time chat features using WebSockets and CKEditor in Node.js',
-      'Built and integrated chatbot functionalities, including custom conversational flows using prompt engineering',
-      'Implemented OAuth2 authentication in Laravel for secure user access management',
-      'Configured and deployed projects on servers, ensuring smooth setup and optimal performance'
+      'Configured and deployed projects on servers, ensuring smooth setup and optimal performance',
+      'Enhanced platform scalability and performance by fixing critical bugs and optimizing backend code',
+      'Set up Linux-based servers, configured environments (Apache/Nginx, PHP, Node.js), and deployed multiple projects with proper security, monitoring, and performance optimization'
     ],
-    technologies: ['Laravel', 'MySQL', 'Node.js', 'WebSockets', 'CKEditor', 'Shopify', 'OAuth2']
+    technologies: ['Laravel', 'Node.js', 'MySQL', 'MongoDB', 'PostgreSQL', 'React', 'Next.js', 'Meilisearch', 'Linux', 'Apache', 'Nginx']
   }
 
   return (

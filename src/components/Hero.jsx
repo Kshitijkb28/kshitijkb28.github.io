@@ -4,12 +4,12 @@ import { ArrowDown, Mail, Phone, Sparkles, Code, Rocket, Shield, Cpu } from 'luc
 
 const Hero = () => {
   const heroStats = [
-    { label: 'Experience', value: '2.2 yrs', detail: 'Full-stack product work' },
+    { label: 'Experience', value: '2 yrs 3 mos', detail: 'Full-stack product work' },
     { label: 'Projects', value: '10+', detail: 'End-to-end deliveries' },
     { label: 'Certifications', value: '2+', detail: 'IBM & Smart IT' },
   ]
 
-  const techPills = ['React', 'Node.js', 'Laravel', 'FastAPI', 'AWS S3']
+  const techPills = ['React', 'Next.js', 'Laravel', 'Node.js', 'PostgreSQL', 'Meilisearch']
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
@@ -88,9 +88,10 @@ const Hero = () => {
               transition={{ delay: 0.4 }}
               className="text-lg text-gray-400 leading-relaxed max-w-xl"
             >
-              Dedicated and result-oriented developer with an entrepreneurial mindset and 
-              professional aptitude in Computer Science. Analytical, innovative, goal-oriented, 
-              and self-motivated professional providing clients a never-before experience.
+              Dedicated and results-oriented Full-Stack Web Developer with 2 years and 3 months of hands-on
+              experience. Possesses an entrepreneurial mindset and strong professional aptitude in the field of
+              Computer Science. Analytical, innovative, and goal-driven, with the ability to deliver high-quality
+              solutions and provide clients with a never-before experience.
             </motion.p>
 
             <motion.div
@@ -197,7 +198,7 @@ const Hero = () => {
                     <p className="text-sm text-gray-400">Current Availability</p>
                     <p className="text-lg text-white font-semibold">Taking new projects</p>
                   </div>
-                  <motion.span 
+                  <motion.span
                     className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 text-green-300 text-sm"
                     animate={{ opacity: [0.6, 1, 0.6] }}
                     transition={{ duration: 2, repeat: Infinity }}
@@ -207,7 +208,7 @@ const Hero = () => {
                 </div>
 
                 <div className="space-y-4">
-                  {[ 
+                  {[
                     { icon: Code, label: 'Frontend', gradient: 'from-blue-500 to-cyan-500', value: 'React + Tailwind' },
                     { icon: Rocket, label: 'Backend', gradient: 'from-purple-500 to-pink-500', value: 'Laravel + Node.js' }
                   ].map((item, index) => (
