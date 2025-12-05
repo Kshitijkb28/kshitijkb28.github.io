@@ -12,7 +12,7 @@ const Hero = () => {
   const techPills = ['React', 'Next.js', 'Laravel', 'Node.js', 'PostgreSQL', 'Meilisearch']
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-3 sm:px-4 overflow-hidden w-full max-w-full">
       {/* Animated background particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
@@ -37,7 +37,7 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="max-w-6xl mx-auto w-full relative z-10">
+      <div className="max-w-6xl mx-auto w-full relative z-10 px-2 sm:px-0">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
           <motion.div
@@ -168,17 +168,17 @@ const Hero = () => {
             >
               <a
                 href="mailto:Kshitijbhardwajkb28@gmail.com"
-                className="flex items-center gap-2 hover:text-blue-400 transition-colors"
+                className="flex items-center gap-2 hover:text-blue-400 transition-colors overflow-hidden"
               >
-                <Mail size={18} />
-                <span>Kshitijbhardwajkb28@gmail.com</span>
+                <Mail size={18} className="flex-shrink-0" />
+                <span className="break-all">Kshitijbhardwajkb28@gmail.com</span>
               </a>
               <a
                 href="tel:+919729916844"
-                className="flex items-center gap-2 hover:text-blue-400 transition-colors"
+                className="flex items-center gap-2 hover:text-blue-400 transition-colors overflow-hidden"
               >
-                <Phone size={18} />
-                <span>+91 9729916844</span>
+                <Phone size={18} className="flex-shrink-0" />
+                <span className="break-all">+91 9729916844</span>
               </a>
             </motion.div>
           </motion.div>

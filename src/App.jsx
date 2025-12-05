@@ -22,7 +22,7 @@ function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen overflow-x-hidden w-full max-w-full">
       {/* Background layers */}
       <div className="fixed inset-0 -z-10 bg-gray-950 overflow-hidden">
         <div className="pattern-grid" aria-hidden="true" />

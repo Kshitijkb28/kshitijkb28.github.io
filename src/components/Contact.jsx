@@ -58,7 +58,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section-shell" ref={ref}>
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10 w-full max-w-full px-2 sm:px-0">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -103,8 +103,8 @@ const Contact = () => {
               >
                 {/* Background glow */}
                 <div className={`absolute inset-0 bg-gradient-to-r ${info.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
-                
-                <motion.div 
+
+                <motion.div
                   className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${info.color} p-3 shadow-lg`}
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
@@ -113,7 +113,7 @@ const Contact = () => {
                 </motion.div>
                 <div className="relative">
                   <p className="text-sm text-gray-400 mb-1">{info.title}</p>
-                  <p className="text-white font-semibold group-hover:text-blue-400 transition-colors">
+                  <p className="text-white font-semibold group-hover:text-blue-400 transition-colors break-all">
                     {info.value}
                   </p>
                 </div>

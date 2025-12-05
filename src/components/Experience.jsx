@@ -21,7 +21,7 @@ const Experience = () => {
 
   return (
     <section id="experience" className="section-shell" ref={ref}>
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10 w-full max-w-full px-2 sm:px-0">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
