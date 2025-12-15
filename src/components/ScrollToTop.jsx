@@ -8,13 +8,11 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate scroll progress
       const scrollTop = window.pageYOffset
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
       setScrollProgress(progress)
 
-      // Toggle visibility
       if (scrollTop > 300) {
         setIsVisible(true)
       } else {
@@ -33,13 +31,6 @@ const ScrollToTop = () => {
     })
   }
 
-  // SVG circle properties
-  const size = 56
-  const strokeWidth = 3
-  const radius = (size - strokeWidth) / 2
-  const circumference = radius * 2 * Math.PI
-  const strokeDashoffset = circumference - (scrollProgress / 100) * circumference
-
   return (
     <AnimatePresence>
       {isVisible && (
@@ -47,65 +38,35 @@ const ScrollToTop = () => {
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
-          className="fixed bottom-8 right-8 z-50"
+          className="fixed bottom-6 right-6 z-50"
         >
-          {/* Progress ring container */}
-          <div className="relative">
-            {/* SVG Progress Ring */}
-            <svg
-              className="absolute inset-0 -rotate-90"
-              width={size}
-              height={size}
-            >
-              {/* Background circle */}
-              <circle
-                cx={size / 2}
-                cy={size / 2}
-                r={radius}
-                fill="none"
-                stroke="rgba(255, 255, 255, 0.2)"
-                strokeWidth={strokeWidth}
-              />
-              {/* Progress circle */}
-              <motion.circle
-                cx={size / 2}
-                cy={size / 2}
-                r={radius}
-                fill="none"
-                stroke="url(#progressGradient)"
-                strokeWidth={strokeWidth}
-                strokeLinecap="round"
-                style={{
-                  strokeDasharray: circumference,
-                  strokeDashoffset: strokeDashoffset,
-                }}
-                initial={{ strokeDashoffset: circumference }}
-                animate={{ strokeDashoffset }}
-                transition={{ duration: 0.1 }}
-              />
-              {/* Gradient definition */}
-              <defs>
-                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3b82f6" />
-                  <stop offset="50%" stopColor="#8b5cf6" />
-                  <stop offset="100%" stopColor="#ec4899" />
-                </linearGradient>
-              </defs>
-            </svg>
-
-            {/* Button */}
+          {/* Progress ring using conic gradient */}
+          <div
+            className="relative w-16 h-16 rounded-full p-1"
+            style={{
+              background: `conic-gradient(
+                from 0deg,
+                #22d3ee 0%,
+                #10b981 ${scrollProgress * 0.5}%,
+                #34d399 ${scrollProgress}%,
+                rgba(255, 255, 255, 0.15) ${scrollProgress}%,
+                rgba(255, 255, 255, 0.15) 100%
+              )`,
+            }}
+          >
+            {/* Inner button */}
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={scrollToTop}
-              className="relative w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-2xl shadow-blue-500/50 hover:shadow-blue-500/70 transition-all flex items-center justify-center group"
+              className="w-full h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 transition-all flex items-center justify-center"
               aria-label="Scroll to top"
             >
               <motion.div
                 animate={{ y: [0, -3, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
-                <ArrowUp className="w-6 h-6 text-white" />
+                <ArrowUp className="w-5 h-5 text-white" />
               </motion.div>
             </motion.button>
           </div>
@@ -116,4 +77,7 @@ const ScrollToTop = () => {
 }
 
 export default ScrollToTop
+
+
+
 
