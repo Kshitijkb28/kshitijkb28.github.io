@@ -52,8 +52,8 @@
     z-index: 0;
     padding-top: 5rem;
     padding-bottom: 5rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     max-width: 100%;
     overflow-x: hidden;
   }
@@ -67,8 +67,22 @@
 
   @media (min-width: 1024px) {
     .section-shell {
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .section-shell {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .section-shell {
+      padding-left: 6rem;
+      padding-right: 6rem;
     }
   }
 

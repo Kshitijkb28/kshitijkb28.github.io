@@ -12,7 +12,7 @@ const Hero = () => {
   const techPills = ['React', 'Next.js', 'Laravel', 'Node.js', 'PostgreSQL', 'Meilisearch']
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-3 sm:px-4 overflow-hidden w-full max-w-full">
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24 overflow-hidden w-full max-w-full">
       {/* Animated background particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
@@ -37,7 +37,7 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="max-w-6xl mx-auto w-full relative z-10 px-2 sm:px-0">
+      <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
           <motion.div
